@@ -40,7 +40,7 @@ Zero Duplicates: Each of the 1,296,675 records (approx.) possesses a unique tran
 
 ### Final Dataset State
 Following the verification process, the dataset was deemed "Analysis-Ready." This clean state allows for the 8× fraud-to-legitimate value disparity to be reported as a statistically accurate finding rather than a result of data corruption.
-###Key SQL Insights (Preliminary)
+### Key SQL Insights (Preliminary)
 Initial Exploratory Data Analysis (EDA) has revealed critical behavioral markers that distinguish fraudulent activity from legitimate consumer behavior:
 
 #### Extreme Class Imbalance
