@@ -5,3 +5,9 @@ SELECT
     ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM train), 2) AS Percentage
 FROM train
 GROUP BY is_fraud
+-- THIS QUERY TELLS  US THAT THE AVERAGE AMOUNT IN A FRAUDULENT TRANSACTION IS  ALMOST 8 TIMES MORE THAN THE NORMAL ONE 
+SELECT 
+    is_fraud,
+   AVG(amt) as Average_Transaction_Amount
+   from train
+   group by is_fraud
