@@ -8,16 +8,16 @@ This project involves the analysis of a large-scale dataset containing approxima
 ### Objective
 The objective is to build a robust analytical pipeline from raw data to actionable business intelligence:
 
-####Data Engineering (SQL): Systematic cleaning, validation, and resolution of data quality issues including duplicates, null values, and invalid entries.
+#### Data Engineering (SQL): Systematic cleaning, validation, and resolution of data quality issues including duplicates, null values, and invalid entries.
 
-####Exploratory Data Analysis (SQL): Identifying the behavioral "DNA" of fraud, focusing on spending spikes, high-velocity transactions, and geographical anomalies.
+#### Exploratory Data Analysis (SQL): Identifying the behavioral "DNA" of fraud, focusing on spending spikes, high-velocity transactions, and geographical anomalies.
 
-####Executive Visualization (Tableau): Developing a high-level Business Intelligence dashboard to visualize geographical and temporal "Hot Zones" of financial risk.
+#### Executive Visualization (Tableau): Developing a high-level Business Intelligence dashboard to visualize geographical and temporal "Hot Zones" of financial risk.
 
-####Predictive Modeling (Python): (Exploratory Phase) Investigating the feasibility of automated anomaly detection and machine learning classifiers to handle the 0.5% class imbalance.
+#### Predictive Modeling (Python): (Exploratory Phase) Investigating the feasibility of automated anomaly detection and machine learning classifiers to handle the 0.5% class imbalance.
 Additionally, the processed data will be prepared for further analytical tasks, including potential modeling and visualization to support deeper insights into fraud detection.
 
-##Data Preparation and Processing
+## Data Preparation and Processing
 To ensure the integrity of the 1.3 million records, a systematic data audit and cleaning pipeline was executed. Despite the large scale of the dataset, the following protocols were performed to maintain high data quality:
 
 ### Data Integrity Audit
@@ -49,4 +49,4 @@ Analysis confirms that fraud accounts for only 0.5% of the total volume. This su
 #### High-Value Targeting
 A comparative analysis of transaction amounts shows a massive disparity in spending behavior.
 
-#####Finding: Fraudulent transactions exhibit an average value 8x higher than legitimate transactions.
+##### Finding: Fraudulent transactions exhibit an average value 8x higher than legitimate transactions.
