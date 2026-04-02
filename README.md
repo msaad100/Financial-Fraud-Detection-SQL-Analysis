@@ -78,3 +78,15 @@ Fraudulent transactions are rare but tend to involve higher amounts.
 Most fraud cases show clear deviation from normal transaction values.  
 A smaller portion follows patterns that resemble regular user behavior.  
 Effective analysis should account for both obvious and subtle forms of fraud.
+### 3. Time-Based Fraud Pattern
+
+Transaction data was analyzed across different hours of the day to identify when fraudulent activity is most likely to occur.
+
+The results show a clear concentration of fraud during late-night hours, specifically between 10 PM and 3 AM. During this time window, fraud rates range approximately from 2.88 percent down to 1.42 percent.
+
+Outside of this period, the fraud rate drops significantly and remains consistently below 0.15 percent.
+
+Insight:  
+Fraudulent activity is heavily time-dependent, with a strong bias toward late-night hours. This may indicate reduced monitoring, lower user activity, or attacker preference for operating during off-peak periods when detection is less likely.
+
+This pattern suggests that time of transaction is an important factor and should be considered in further analysis and detection strategies.
