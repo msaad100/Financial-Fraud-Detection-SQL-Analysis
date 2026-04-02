@@ -51,3 +51,14 @@ SELECT
 FROM train
 GROUP BY DATEPART(hh, trans_date_trans_time)
 ORDER BY Hourly_Fraud_Rate DESC
+-- COMPARE THE FRAUD RATE FROM DIFFERENT CITIES TO FIND THE MOST VULNERABLE
+SELECT 
+    city,
+    state,
+    COUNT(*) AS Total_Trans,
+    SUM(CAST(is_fraud AS INT)) AS Fraud_Count,
+    ROUND(CAST(SUM(CAST(is_fraud AS INT)) AS FLOAT) * 100 / COUNT(*), 2) AS City_Fraud_Rate
+FROM train
+GROUP BY city, state
+HAVING COUNT(*) > 100 -- Filters out tiny towns with <100 transactionS to avoid 100% fake rates
+ORDER BY City_Fraud_Rate DESC;
