@@ -18,7 +18,8 @@ UNION ALL
 SELECT 
     'Duplicate Transactions' AS check_type, 
 (COUNT(*) - COUNT(DISTINCT trans_num)) 
-FROM train;--THIS QUERY GIVES THE CRUX OF THE DATA IT TELLS US THAT ONLY 0.58% OF THE TRANSACTIONS OCCURED WERE FRAUDULENT
+FROM train;
+--THIS QUERY TELLS US THAT ONLY 0.58% OF THE TRANSACTIONS OCCURED WERE FRAUDULENT
 SELECT 
     is_fraud,
     COUNT(*) AS GroupCount,
@@ -31,3 +32,13 @@ SELECT
    AVG(amt) as Average_Transaction_Amount
    from train
    group by is_fraud
+ -- This query gives us deeper insight on average transaction based comparison based on categories   
+SELECT 
+    category,
+    ROUND(AVG(CASE WHEN is_fraud = 0 THEN amt END), 2) AS Normal_Avg,
+    ROUND(AVG(CASE WHEN is_fraud = 1 THEN amt END), 2) AS Fraud_Avg,
+    ROUND(AVG(CASE WHEN is_fraud = 1 THEN amt END) / 
+          NULLIF(AVG(CASE WHEN is_fraud = 0 THEN amt END), 0), 2) AS Magnitude_Difference
+FROM train
+GROUP BY category
+ORDER BY Magnitude_Difference DESC
