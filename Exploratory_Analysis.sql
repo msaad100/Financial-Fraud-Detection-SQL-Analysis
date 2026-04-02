@@ -42,3 +42,12 @@ SELECT
 FROM train
 GROUP BY category
 ORDER BY Magnitude_Difference DESC
+-- QUERY TO COMPARE FRAUD PERCENTAGE BETWEEN HOURS THROUGH OUT THE DAY
+SELECT 
+    DATEPART(hh, trans_date_trans_time) AS Hour_of_Day,
+    COUNT(*) AS Total_Transactions,
+    SUM(CAST(is_fraud AS INT)) AS Fraud_Count,
+    ROUND(CAST(SUM(CAST(is_fraud AS INT)) AS FLOAT) * 100 / COUNT(*), 2) AS Hourly_Fraud_Rate
+FROM train
+GROUP BY DATEPART(hh, trans_date_trans_time)
+ORDER BY Hourly_Fraud_Rate DESC
