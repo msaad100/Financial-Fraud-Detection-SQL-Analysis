@@ -90,3 +90,30 @@ Insight:
 This indicates that transactions occurring during late-night hours carry a significantly higher probability of being fraudulent compared to daytime activity. The difference is substantial, suggesting that time of transaction is a critical risk factor rather than just a behavioral pattern.
 
 This finding highlights the importance of incorporating time-based features when analyzing or monitoring transaction risk.
+### 4. Location-Based Fraud Distribution
+
+Fraud rates were analyzed across cities, considering only those with a minimum of 100 transactions to ensure statistical reliability.
+
+The analysis reveals significant variation in fraud rates across locations, indicating that fraud risk is not uniformly distributed.
+
+#### Top High-Risk Cities
+
+The following cities show the highest fraud rates:
+
+| City                  | State | Fraud Rate (%) |
+|----------------------|-------|----------------|
+| Aurora               | CO    | 4.49           |
+| Clearwater           | FL    | 4.34           |
+| Moscow               | IA    | 3.10           |
+| Boulder              | MT    | 3.04           |
+| Riverview            | MI    | 2.98           |
+| Howes Cave           | NY    | 2.98           |
+| Bay City             | OR    | 2.94           |
+| Girard               | GA    | 2.92           |
+| Pearlington          | MS    | 2.84           |
+| White Sulphur Springs| WV    | 2.84           |
+
+Insight:  
+Certain cities exhibit significantly higher fraud rates compared to the overall dataset average (~0.58 percent). These locations represent potential high-risk zones and may require closer monitoring.
+
+This reinforces that geographic features can contribute to fraud detection, especially when combined with transaction volume and other behavioral indicators.
