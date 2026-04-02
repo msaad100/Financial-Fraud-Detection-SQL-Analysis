@@ -38,15 +38,43 @@ Zero Inconsistencies: All transaction amounts were found to be positive, valid n
 
 Zero Duplicates: Each of the 1,296,675 records (approx.) possesses a unique transaction identifier, ensuring no skewed results during behavioral analysis.
 
-### Final Dataset State
-Following the verification process, the dataset was deemed "Analysis-Ready." This clean state allows for the 8× fraud-to-legitimate value disparity to be reported as a statistically accurate finding rather than a result of data corruption.
-### Key SQL Insights (Preliminary)
-Initial Exploratory Data Analysis (EDA) has revealed critical behavioral markers that distinguish fraudulent activity from legitimate consumer behavior:
+## Data Analysis & Behavioral Insights
 
-#### Extreme Class Imbalance
-Analysis confirms that fraud accounts for only 0.5% of the total volume. This suggests that the dataset requires specialized sampling or algorithmic weighting to be effective in a predictive environment.
+This section analyzes the differences between legitimate and fraudulent transactions within the training dataset (approximately 1.3 million records), with the aim of identifying consistent behavioral patterns.
 
-#### High-Value Targeting
-A comparative analysis of transaction amounts shows a massive disparity in spending behavior.
+### 1. Transaction Amount Disparity
 
-##### Finding: Fraudulent transactions exhibit an average value 8x higher than legitimate transactions.
+A clear difference exists in transaction amounts between fraud and non-fraud cases.
+
+Fraudulent transactions show a much higher average amount, roughly eight times greater than legitimate transactions. In contrast, legitimate transactions remain relatively stable and lower in value.
+
+Insight:  
+Fraud in this dataset is generally associated with high-value transactions, indicating a tendency toward larger, more aggressive financial activity rather than small, frequent attempts.
+
+### 2. Category-Based Behavior Analysis
+
+To determine whether the higher fraud amounts were influenced by naturally expensive categories, transaction behavior was analyzed relative to category-specific averages.
+
+#### 2.1 Signal Identification
+
+Fraudulent transactions were compared against the average transaction value within each category. This ensured that the observed differences were not simply due to category-level pricing variations.
+
+#### 2.2 Fraud Behavior Patterns
+
+The analysis suggests two distinct patterns of fraudulent activity.
+
+High-value fraud:  
+In most categories, fraudulent transactions exceed the normal spending range by a noticeable margin. These cases are relatively easier to identify due to their deviation from typical behavior.
+
+Stealth fraud:  
+In a smaller number of categories, fraudulent transactions fall below the category average. This indicates attempts to mimic regular, low-value transactions, likely to avoid detection.
+
+Insight:  
+Fraudulent behavior is not consistent across all scenarios. While many cases involve large transaction amounts, some follow a more subtle pattern designed to blend in with normal activity.
+
+### Key Takeaways
+
+Fraudulent transactions are rare but tend to involve higher amounts.  
+Most fraud cases show clear deviation from normal transaction values.  
+A smaller portion follows patterns that resemble regular user behavior.  
+Effective analysis should account for both obvious and subtle forms of fraud.
