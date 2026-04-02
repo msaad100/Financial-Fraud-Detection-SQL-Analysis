@@ -62,3 +62,22 @@ FROM train
 GROUP BY city, state
 HAVING COUNT(*) > 100 -- Filters out tiny towns with <100 transactionS to avoid 100% fake rates
 ORDER BY City_Fraud_Rate DESC;
+-- COMPARES THE FRAUD RATE BY CATEGORY IN THE PEAK FRAUD HOURS
+SELECT 
+    category,
+    CASE 
+        WHEN DATEPART(hh, trans_date_trans_time) BETWEEN 22 AND 23 OR DATEPART(hh, trans_date_trans_time) BETWEEN 0 AND 3 THEN 'Night (10PM-3AM)'
+        ELSE 'Day (4AM-9PM)'
+    END AS Time_Period,
+    COUNT(*) AS Total_Transactions,
+    SUM(CAST(is_fraud AS INT)) AS Fraud_Count,
+    ROUND(CAST(SUM(CAST(is_fraud AS INT)) AS FLOAT) * 100 / COUNT(*), 2) AS Fraud_Rate_Percentage
+FROM train
+GROUP BY 
+    category, 
+    CASE 
+        WHEN DATEPART(hh, trans_date_trans_time) BETWEEN 22 AND 23 OR DATEPART(hh, trans_date_trans_time) BETWEEN 0 AND 3 THEN 'Night (10PM-3AM)'
+        ELSE 'Day (4AM-9PM)'
+    END
+HAVING COUNT(*) > 100
+ORDER BY Fraud_Rate_Percentage DESC
