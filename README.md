@@ -117,3 +117,30 @@ Insight:
 Certain cities exhibit significantly higher fraud rates compared to the overall dataset average (~0.58 percent). These locations represent potential high-risk zones and may require closer monitoring.
 
 This reinforces that geographic features can contribute to fraud detection, especially when combined with transaction volume and other behavioral indicators.
+### 5. Category Behavior During High-Risk Hours
+
+A combined analysis of transaction category and time was performed to evaluate how fraud risk varies across categories during high-risk hours (10 PM to 3 AM).
+
+The results show that fraud rates differ significantly between categories within the same time window.
+
+#### High-Risk Categories at Night
+
+| Category       | Fraud Rate (%) |
+|----------------|---------------|
+| shopping_net   | 6.01          |
+| misc_net       | 3.96          |
+| grocery_pos    | 3.59          |
+| shopping_pos   | 2.52          |
+
+#### Lower-Risk Categories at Night
+
+| Category       | Fraud Rate (%) |
+|----------------|---------------|
+| home           | 0.85          |
+| grocery_net    | 0.75          |
+| food_dining    | 0.74          |
+
+Insight:  
+Fraud risk during late-night hours is not uniform across categories. Online and retail-related categories show significantly higher fraud rates, while everyday spending categories such as food and home exhibit lower risk.
+
+This indicates that fraud detection strategies should consider both time and transaction type together rather than treating them as independent factors.
