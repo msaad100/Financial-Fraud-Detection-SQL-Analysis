@@ -144,3 +144,88 @@ Insight:
 Fraud risk during late-night hours is not uniform across categories. Online and retail-related categories show significantly higher fraud rates, while everyday spending categories such as food and home exhibit lower risk.
 
 This indicates that fraud detection strategies should consider both time and transaction type together rather than treating them as independent factors.
+## Visualization & Dashboard (Tableau)
+
+This section presents the visual layer of the project, where analytical findings are translated into interactive dashboards for better interpretation and exploration.
+
+### 1. Data Pre-processing
+
+Before importing into Tableau, the dataset was refined to ensure consistency and usability:
+
+- Removed formatting artifacts from SQL exports (extra spaces, separators)
+- Standardized column structure for clean ingestion
+- Formatted `Hour_of_Day` as a two-digit string (00–23) to preserve correct chronological ordering in visualizations
+
+---
+
+### 2. Geospatial Risk Heatmap
+
+Type: Density Map  
+
+Instead of plotting individual city points, a density map was used to highlight regions with higher concentrations of fraud. This approach avoids overlapping markers and improves clarity.
+
+Color Encoding:  
+A diverging color scale centered around the global fraud rate (~0.58%) was applied to distinguish low-risk and high-risk zones.
+
+Insight:  
+Certain geographic regions show noticeably higher fraud concentration, supporting the earlier location-based analysis.
+
+---
+
+### 3. Temporal Analysis (Fraud by Hour)
+
+Type: Bar Chart  
+
+This visualization captures the variation of fraud risk across different hours of the day.
+
+Insight:  
+A clear spike in fraud activity is observed between 22:00 and 03:00, confirming the time-based pattern identified during SQL analysis.
+
+---
+
+### 4. Category–Time Interaction Analysis
+
+Type: Heatmap Matrix  
+
+This chart combines transaction category and hour of day to analyze how fraud risk changes across both dimensions simultaneously.
+
+Insight:  
+Online shopping (`shopping_net`) emerges as the highest-risk category during late-night hours, reinforcing the importance of combining multiple features in fraud detection.
+
+---
+
+### 5. Dashboard Interactivity
+
+Feature: Action Filters  
+
+The dashboard includes interactive filtering:
+
+- Selecting a region on the map dynamically updates other visualizations  
+- Enables focused analysis of fraud patterns within specific geographic areas  
+
+This allows users to explore how fraud behavior varies across different locations.
+
+---
+
+### 6. Dashboard Preview
+
+The complete dashboard is included as an image:
+
+`fraud_analytics_dashboard.png` (located in the root directory)
+
+This dashboard integrates all key insights:
+- Geographic distribution  
+- Time-based patterns  
+- Category-based risk  
+- Combined behavioral analysis  
+
+---
+
+### Summary
+
+The visualization layer complements the SQL analysis by:
+- Making patterns easier to interpret  
+- Enabling interactive exploration  
+- Highlighting relationships between multiple variables  
+
+Together, they form a complete analytical workflow from raw data to actionable insights.
