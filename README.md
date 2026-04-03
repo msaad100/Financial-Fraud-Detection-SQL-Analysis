@@ -211,7 +211,7 @@ This allows users to explore how fraud behavior varies across different location
 
 The complete dashboard is included as an image:
 
-`fraud_analytics_dashboard.png` (located in the root directory)
+[![Fraud Detection Dashboard](fraud_analytics_dashboard.png)]
 
 This dashboard integrates all key insights:
 - Geographic distribution  
