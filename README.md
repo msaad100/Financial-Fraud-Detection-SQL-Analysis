@@ -202,8 +202,26 @@ The dashboard includes interactive filtering:
 This allows users to explore how fraud behavior varies across different locations.
 
 ---
+### 6. Spatial-Temporal Velocity Validation & Noise Filtering
 
-### 6. Dashboard Preview
+To isolate physical card cloning risks, a velocity check was engineered using SQL window functions (`LAG`) to calculate the implicit physical speed (MPH) between consecutive card transactions. 
+
+Initial runs showed a 2.21% fraud rate for speeds >500 mph, which dropped significantly upon removing online merchant server coordinates (`_net` categories).
+
+#### In-Person Physical Velocity vs. Fraud Risk (Excluding E-Commerce)
+| Speed Range (MPH) | Total Transactions | Fraud Cases | Fraud Rate (%) | Trend Interpretation |
+| :--- | :---: | :---: | :---: | :--- |
+| 0 - 10 mph | 433,111 | 1,679 | 0.39% | Baseline local movement |
+| 11 - 60 mph | 440,068 | 1,298 | 0.29% | Normal vehicle transit |
+| 61 - 120 mph | 95,468 | 589 | 0.62% | Highway travel elevation |
+| 121 - 500 mph | 89,006 | 735 | 0.83% | Moderate anomaly risk |
+| **Over 500 mph** | 31,757 | 368 | **1.16%** | **Peak physical speed risk** |
+
+#### Critical Discovery & Analytical Insight
+* **The E-Commerce Distortion:** The initial data contained significant geographic noise caused by e-commerce transactions (`_net`). Automated digital renewals or online purchases log the merchant's corporate server coordinates rather than the user's location, artificially inflating calculated transit speeds up to thousands of mph.
+* **The Reality of Physical Fraud:** Once internet transactions were filtered out to isolate genuine card-present terminal swipes, the fraud rate at "Over 500 mph" dropped to 1.16%. While this still represents a **3x risk increase** compared to normal local movement (0.39%), it proves that *physical card cloning via impossible travel is not the primary driver of fraud in this ecosystem.*
+* **Strategic Recommendation:** Defensive resources should not be over-indexed on physical velocity blocks. Because the vast majority of high-speed anomalies are legitimate e-commerce cross-references, fraud detection efforts yield a far higher return on investment when focused on digital behavior patterns within the e-commerce channels themselves.
+### 7. Dashboard Preview
 
 The complete dashboard is included as an image:
 
