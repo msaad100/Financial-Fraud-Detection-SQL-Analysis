@@ -12,9 +12,21 @@ The objective is to build a robust analytical pipeline from raw data to actionab
 
 #### Exploratory Data Analysis (SQL): Identifying the behavioral "DNA" of fraud, focusing on spending spikes, high-velocity transactions, and geographical anomalies.
 
-#### Executive Visualization (Tableau): Developing a high-level Business Intelligence dashboard to visualize geographical and temporal "Hot Zones" of financial risk.
+#### Executive Visualization (Tableau & Power BI): Developing a high-level Business Intelligence dashboard to visualize geographical and temporal "Hot Zones" of financial risk.
 
 Additionally, the processed data will be prepared for further analytical tasks, including potential modeling and visualization to support deeper insights into fraud detection.
+---
+
+## 🛠️ Tech Stack & Tools
+This project leverages an industry-standard modern data stack to handle large-scale data processing, analytical querying, and interactive reporting:
+
+| Phase | Tool | Purpose |
+| :--- | :--- | :--- |
+| **Database & Querying** | ![SQL](https://img.shields.io/badge/MS%20SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white) | Relational data warehousing, data cleaning, CTEs, and advanced window functions. |
+| **Data Visualization** | ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat-square&logo=tableau&logoColor=white) | Interactive dashboard design, geospatial mapping, and temporal trend analysis. |
+| **Data Prep & Ad-hoc Analysis** | ![Excel](https://img.shields.io/badge/MS%20Excel-217346?style=flat-square&logo=microsoftexcel&logoColor=white) | Initial dataset profiling, schema verification, and quick statistical validation. |
+
+---
 
 ## Data Preparation and Processing
 To ensure the integrity of the 1.3 million records, a systematic data audit and cleaning pipeline was executed. Despite the large scale of the dataset, the following protocols were performed to maintain high data quality:
