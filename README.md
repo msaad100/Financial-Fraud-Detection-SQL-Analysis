@@ -235,7 +235,8 @@ Initial runs showed a 2.21% fraud rate for speeds >500 mph, which dropped signif
 | 61 - 120 mph | 95,468 | 589 | 0.62% | Highway travel elevation |
 | 121 - 500 mph | 89,006 | 735 | 0.83% | Moderate anomaly risk |
 | **Over 500 mph** | 31,757 | 368 | **1.16%** | **Peak physical speed risk** |
-
+### Advance Analysis Dashboard
+[![Fraud Detection Dashboard-2](Advanced_Analysis_Dashboard.png)]
 ### Summary
 
 The visualization layer complements the SQL analysis by:
