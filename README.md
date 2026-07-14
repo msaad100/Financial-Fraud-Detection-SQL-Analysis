@@ -1,53 +1,67 @@
-# Financial-Fraud-Detection-SQL-Analysis
+# Financial Fraud Detection — SQL Analysis
 
-## Questions (The Ask)
+> Analyzing 1.4M+ credit card transactions to uncover the behavioral DNA 
+> of financial fraud using advanced SQL, Tableau, and Power BI.
 
-### Problem Statement
-This project involves the analysis of a large-scale dataset containing approximately 1.4 million credit card transaction records collected over the past two years. Out of this, nearly 1.3 million records are designated for training purposes. The dataset may contain inconsistencies, missing values, or anomalous entries that require systematic cleaning and validation.
+## Key Findings
+- 🕐 **Fraud spikes 10–20x at night** (10 PM–3 AM) vs. daytime across all categories
+- 🛒 **shopping_net carries the highest absolute night risk** at 6.81% fraud rate
+- 🏠 **"home" category is 42.5x riskier at night** despite a low absolute rate — the strongest behavioral signal
+- 🚀 **Physical card velocity fraud is largely a myth** — e-commerce coordinate noise accounts for most "impossible travel" anomalies
 
-### Objective
-The objective is to build a robust analytical pipeline from raw data to actionable business intelligence:
-
-#### Data Engineering (SQL): Systematic cleaning, validation, and resolution of data quality issues including duplicates, null values, and invalid entries.
-
-#### Exploratory Data Analysis (SQL): Identifying the behavioral "DNA" of fraud, focusing on spending spikes, high-velocity transactions, and geographical anomalies.
-
-#### Executive Visualization (Tableau & Power BI): Developing a high-level Business Intelligence dashboard to visualize geographical and temporal "Hot Zones" of financial risk.
-
-Additionally, the processed data will be prepared for further analytical tasks, including potential modeling and visualization to support deeper insights into fraud detection.
 ---
 
-## 🛠️ Tech Stack & Tools
-This project leverages an industry-standard modern data stack to handle large-scale data processing, analytical querying, and interactive reporting:
+## Problem Statement
+This project analyzes approximately 1.4 million credit card transaction records 
+collected over two years (~1.3M designated for training). The goal is to build 
+a complete analytical pipeline — from raw data to actionable business intelligence 
+— identifying consistent behavioral patterns that distinguish fraudulent from 
+legitimate transactions.
+
+### Objectives
+- **Data Engineering (SQL):** Systematic cleaning, validation, and resolution of 
+  data quality issues including duplicates, null values, and invalid entries
+- **Exploratory Data Analysis (SQL):** Identifying the behavioral "DNA" of fraud 
+  — spending spikes, high-velocity transactions, and geographical anomalies
+- **Executive Visualization (Tableau & Power BI):** Interactive BI dashboards 
+  visualizing geographical and temporal fraud "Hot Zones"
+
+---
+
+## 🛠️ Tech Stack
 
 | Phase | Tool | Purpose |
 | :--- | :--- | :--- |
-| **Database & Querying** | ![SQL](https://img.shields.io/badge/MS%20SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white) | Relational data warehousing, data cleaning, CTEs, and advanced window functions. |
-| **Data Visualization** | ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat-square&logo=tableau&logoColor=white) | Interactive dashboard design, geospatial mapping, and temporal trend analysis. |
-| **Data Prep & Ad-hoc Analysis** | ![Excel](https://img.shields.io/badge/MS%20Excel-217346?style=flat-square&logo=microsoftexcel&logoColor=white) | Initial dataset profiling, schema verification, and quick statistical validation. |
+| **Database & Querying** | ![SQL](https://img.shields.io/badge/MS%20SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white) | Data warehousing, cleaning, CTEs, window functions (LAG) |
+| **Visualization** | ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat-square&logo=tableau&logoColor=white) | Geospatial mapping, temporal trends, interactive dashboards |
+| **Visualization** | ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat-square&logo=powerbi&logoColor=black) | DAX modeling, KPI reporting, cross-filtered dashboards |
+| **Data Prep** | ![Excel](https://img.shields.io/badge/MS%20Excel-217346?style=flat-square&logo=microsoftexcel&logoColor=white) | Schema verification and quick statistical validation |
 
 ---
 
-## Data Preparation and Processing
-To ensure the integrity of the 1.3 million records, a systematic data audit and cleaning pipeline was executed. Despite the large scale of the dataset, the following protocols were performed to maintain high data quality:
+## Dataset
+- **Source:** [Kaggle — Credit Card Fraud Detection Dataset](ADD YOUR LINK HERE)
+- **Size:** ~1.4M transaction records over 2 years
+- **Training Set:** 1,296,675 records
 
-### Data Integrity Audit
-A comprehensive audit was performed using SQL to identify structural and logical inconsistencies. The audit focused on three primary risk areas:
+---
 
-Null Values: Verified that critical fields, including amt, is_fraud, and trans_num, contained zero null entries.
+## Data Preparation & Validation
 
-Invalid Transaction Amounts: Identified and flagged any records with transaction values less than or equal to zero.
+### Audit Protocol
+SQL was used to identify structural and logical inconsistencies across three risk areas:
+- **Null Values:** Verified zero null entries across critical fields (`amt`, `is_fraud`, `trans_num`)
+- **Invalid Amounts:** Flagged any records with transaction values ≤ 0
+- **Duplicate Keys:** Checked `trans_num` for duplicate entries across all training rows
 
-Primary Key Uniqueness: Checked the trans_num identifier for duplicate entries across the 1.3 million training rows.
+### Results
+| Check | Result |
+| :--- | :--- |
+| Null values | ✅ Zero — 100% data density |
+| Invalid amounts | ✅ Zero — all entries positive |
+| Duplicate records | ✅ Zero — all 1,296,675 records unique |
 
-### Validation Results
-The processing phase confirmed a high level of data cleanliness:
-
-Zero Nulls: 100% data density across all analyzed columns.
-
-Zero Inconsistencies: All transaction amounts were found to be positive, valid numerical entries.
-
-Zero Duplicates: Each of the 1,296,675 records (approx.) possesses a unique transaction identifier, ensuring no skewed results during behavioral analysis.
+---
 
 ## Data Analysis & Behavioral Insights
 
