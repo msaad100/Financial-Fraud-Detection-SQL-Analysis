@@ -40,7 +40,7 @@ legitimate transactions.
 ---
 
 ## Dataset
-- **Source:** [Kaggle — Credit Card Fraud Detection Dataset](ADD YOUR LINK HERE)
+- **Source:** [Kaggle — Credit Card Fraud Detection Dataset]
 - **Size:** ~1.4M transaction records over 2 years
 - **Training Set:** 1,296,675 records
 
