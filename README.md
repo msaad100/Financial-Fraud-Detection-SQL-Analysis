@@ -118,7 +118,7 @@ Certain cities exhibit significantly higher fraud rates compared to the overall 
 This reinforces that geographic features can contribute to fraud detection, especially when combined with transaction volume and other behavioral indicators.
 ### 5. Category Volatility & Relative Risk Analysis (Day vs. Night)
 
-A comparative analysis evaluated how fraud risk spikes within individual categories during high-risk hours (10 PM to 3 AM) versus daytime hours (3 AM to 10 PM). Comparing the relative risk multiplier reveals that lower-volume night categories experience the most drastic volatility.
+In my initial analysis i compared the fraud rate of different categories at night-time, although it gave a good view into the overall fraud rates happening in that time span for multiple categories. The visuals for this analysis are also available in my tableau dashboard. However, it did not consider the difference in the intensity of this fraud rate from daytime which could not comprehend how deeply a category fraud rate is influenced during this time.  A comparative analysis evaluated how fraud risk spikes within individual categories during high-risk hours (10 PM to 3 AM) versus daytime hours (3 AM to 10 PM). Comparing the relative risk multiplier reveals that lower-volume night categories experience the most drastic volatility.A new Dashboard using Power BI was designed for this new analysis and findings.
 
 #### High-Volatility Categories (Highest Risk Spikes)
 | Category | Night Fraud Rate (%) | Day Fraud Rate (%) | Relative Risk Increase |
@@ -202,20 +202,7 @@ The dashboard includes interactive filtering:
 This allows users to explore how fraud behavior varies across different locations.
 
 ---
-### 6. Spatial-Temporal Velocity Validation & Noise Filtering
 
-To isolate physical card cloning risks, a velocity check was engineered using SQL window functions (`LAG`) to calculate the implicit physical speed (MPH) between consecutive card transactions. 
-
-Initial runs showed a 2.21% fraud rate for speeds >500 mph, which dropped significantly upon removing online merchant server coordinates (`_net` categories).
-
-#### In-Person Physical Velocity vs. Fraud Risk (Excluding E-Commerce)
-| Speed Range (MPH) | Total Transactions | Fraud Cases | Fraud Rate (%) | Trend Interpretation |
-| :--- | :---: | :---: | :---: | :--- |
-| 0 - 10 mph | 433,111 | 1,679 | 0.39% | Baseline local movement |
-| 11 - 60 mph | 440,068 | 1,298 | 0.29% | Normal vehicle transit |
-| 61 - 120 mph | 95,468 | 589 | 0.62% | Highway travel elevation |
-| 121 - 500 mph | 89,006 | 735 | 0.83% | Moderate anomaly risk |
-| **Over 500 mph** | 31,757 | 368 | **1.16%** | **Peak physical speed risk** |
 
 #### Critical Discovery & Analytical Insight
 * **The E-Commerce Distortion:** The initial data contained significant geographic noise caused by e-commerce transactions (`_net`). Automated digital renewals or online purchases log the merchant's corporate server coordinates rather than the user's location, artificially inflating calculated transit speeds up to thousands of mph.
@@ -234,6 +221,20 @@ This dashboard integrates all key insights:
 - Combined behavioral analysis  
 
 ---
+### 6. Spatial-Temporal Velocity Validation & Noise Filtering
+
+To isolate physical card cloning risks, a velocity check was engineered using SQL window functions (`LAG`) to calculate the implicit physical speed (MPH) between consecutive card transactions. 
+
+Initial runs showed a 2.21% fraud rate for speeds >500 mph, which dropped significantly upon removing online merchant server coordinates (`_net` categories).
+
+#### In-Person Physical Velocity vs. Fraud Risk (Excluding E-Commerce)
+| Speed Range (MPH) | Total Transactions | Fraud Cases | Fraud Rate (%) | Trend Interpretation |
+| :--- | :---: | :---: | :---: | :--- |
+| 0 - 10 mph | 433,111 | 1,679 | 0.39% | Baseline local movement |
+| 11 - 60 mph | 440,068 | 1,298 | 0.29% | Normal vehicle transit |
+| 61 - 120 mph | 95,468 | 589 | 0.62% | Highway travel elevation |
+| 121 - 500 mph | 89,006 | 735 | 0.83% | Moderate anomaly risk |
+| **Over 500 mph** | 31,757 | 368 | **1.16%** | **Peak physical speed risk** |
 
 ### Summary
 
